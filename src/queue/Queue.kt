@@ -1,7 +1,7 @@
 package queue
 
-class Queue (maxSize: Int) {
-    private val q = Array<Any>(maxSize + 1) {0}
+class Queue(maxSize: Int) {
+    private val q = Array<Any>(maxSize + 1) { 0 }
     private var head = 0
     private var tail = 0
 
@@ -45,7 +45,8 @@ class Queue (maxSize: Int) {
         head %= q.size
         return element
     }
-/*
+
+    /*
     fun peek():  Any? {
         if (isEmpty()) {
             println("Peek failed: queue is empty.")
@@ -69,7 +70,7 @@ class Queue (maxSize: Int) {
         }
         return info + "\n" + queue
     }
-*/
+    */
     fun check() {
         assert(tail >= 0)
         assert(tail < q.size)
