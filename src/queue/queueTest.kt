@@ -3,7 +3,7 @@ package queue
 import kotlin.math.pow
 import kotlin.random.Random
 
-fun random_test() {
+fun queueRandomTest() {
     val N = 10000
     var add = 0
     var rm = 0
@@ -82,5 +82,5 @@ fun random_test() {
 }
 
 fun main(args: Array<String>) {
-    random_test()
+    queueRandomTest()
 }
