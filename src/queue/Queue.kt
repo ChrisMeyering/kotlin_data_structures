@@ -10,11 +10,11 @@ class Queue(private val maxSize: Int) {
         assert(maxSize > 0)
     }
 
-    fun size(): Int {
-        if (head > tail) {
-            return q.size - head + tail
+    private fun size(): Int {
+        return if (head > tail) {
+            q.size - head + tail
         } else {
-            return tail - head
+            tail - head
         }
     }
 
@@ -41,8 +41,7 @@ class Queue(private val maxSize: Int) {
             //println("Dequeue failed: queue is empty.")
             return null
         }
-        val element = q[head]
-        head++
+        val element = q[head++]
         head %= q.size
         return element
     }
