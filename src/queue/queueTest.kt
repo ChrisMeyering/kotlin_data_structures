@@ -28,11 +28,11 @@ fun queueRandomTest() {
                 val element = q.peek()
                 q.check()
                 if (element == null) {
-                    assert(list.size == 0)
+                    assert(list.isEmpty())
                     assert(q.isEmpty())
                     peekEmpty++
                 } else {
-                    val expectedElement = list[0]
+                    val expectedElement = list.first()
                     assert(expectedElement == element)
                     peek++
                 }
@@ -53,7 +53,7 @@ fun queueRandomTest() {
                 val element = q.dequeue()
                 q.check()
                 if (element == null) {
-                    assert(list.size == 0)
+                    assert(list.isEmpty())
                     assert(q.isEmpty())
                     rmEmpty++
                 } else {
@@ -65,6 +65,7 @@ fun queueRandomTest() {
         }
     }
     while (list.isNotEmpty()) {
+        assert(!q.isEmpty())
         val element = q.dequeue()
         q.check()
         val expectedElement = list.removeAt(0)
@@ -72,7 +73,6 @@ fun queueRandomTest() {
         rm++
     }
     assert(q.isEmpty())
-    assert(list.isEmpty())
     println("adds: $add")
     println("adds to full queue: $addFull")
     println("removes: $rm")
