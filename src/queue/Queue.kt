@@ -1,9 +1,10 @@
 package queue
 
-class Queue (maxSize: Int) {
-    private val q = Array<Any>(maxSize + 1) {0}
+class Queue(private val maxSize: Int) {
+    private val q = Array<Any>(maxSize + 1) { 0 }
     private var head = 0
     private var tail = 0
+
 
     init {
         assert(maxSize > 0)
@@ -18,11 +19,11 @@ class Queue (maxSize: Int) {
     }
 
     fun isEmpty(): Boolean {
-        return size() == 0
+        return head == tail
     }
 
     fun isFull(): Boolean {
-        return size() == q.size - 1
+        return size() == maxSize
     }
 
     fun enqueue(element: Any): Boolean {
@@ -45,31 +46,15 @@ class Queue (maxSize: Int) {
         head %= q.size
         return element
     }
-/*
-    fun peek():  Any? {
+
+    fun peek(): Any? {
         if (isEmpty()) {
-            println("Peek failed: queue is empty.")
+            //println("Peek failed: queue is empty.")
             return null
         }
         return q[head]
     }
 
-    fun info(): String {
-        val info = "head = $head | tail = $tail | size = ${size()} "
-        var i = head
-        var queue = "["
-        while (i != tail) {
-            queue += q[i]
-            if (i++ != tail - 1) {
-                queue += ", "
-            } else {
-                queue += "]"
-            }
-            i %= q.size
-        }
-        return info + "\n" + queue
-    }
-*/
     fun check() {
         assert(tail >= 0)
         assert(tail < q.size)
@@ -77,7 +62,7 @@ class Queue (maxSize: Int) {
         assert(tail < q.size)
         assert(size() < q.size)
         if (isEmpty()) {
-            assert(head == tail)
+            assert(size() == 0)
         }
     }
 }
