@@ -64,14 +64,14 @@ fun random_test() {
             }
         }
     }
-    while (!q.isEmpty()) {
+    while (list.isNotEmpty()) {
         val element = q.dequeue()
         q.check()
         val expectedElement = list.removeAt(0)
         assert(expectedElement == element)
         rm++
     }
-    assert(q.size() == 0)
+    assert(q.isEmpty())
     assert(list.isEmpty())
     println("adds: $add")
     println("adds to full queue: $addFull")
